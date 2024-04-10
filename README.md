@@ -8,7 +8,10 @@ Contact [vietmap.vn](https://bit.ly/vietmap-api) to register a valid key.
 ## Getting started
 This project use [vietmap_flutter_navigation](https://pub.dev/packages/vietmap_flutter_navigation) and [vietmap_flutter_gl](https://pub.dev/packages/vietmap_flutter_gl) to show and navigate on map. Please read the document of these packages before using this package.
 
-# Replace all YOUR_API_KEY_HERE with your key and YOUR_MAP_STYLE_URL with your map style url in [app_context.dart](/lib/di/app_context.dart) and [Info.plist](/ios/Runner/Info.plist) (for iOS)  
+## Environment configure
+- Create `.env` file, which contains all content as [example.env](/example.env) file we created.
+- Replace your api key to the `YOUR_API_KEY_HERE` tag in [Info.plist](/ios/Runner/Info.plist) file.
+## Replace all YOUR_API_KEY_HERE with your key and YOUR_MAP_STYLE_URL with your map style url in [app_context.dart](/lib/di/app_context.dart) and [Info.plist](/ios/Runner/Info.plist) (for iOS)  
 <br></br>
 <br></br>
 

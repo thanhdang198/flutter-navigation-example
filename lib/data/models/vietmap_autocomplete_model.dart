@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:vietmap_map/domain/entities/vietmap_model.dart';
 
 import '../../constants/constants.dart';

@@ -2,7 +2,7 @@ import 'package:vietmap_map/domain/entities/vietmap_model.dart';
 
 class VietmapReverseModel extends VietmapModel {
   String? refId;
-  double? distance;
+  num? distance;
 
   VietmapReverseModel(
       {super.lat,

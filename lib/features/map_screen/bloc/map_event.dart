@@ -2,6 +2,7 @@ import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 import 'package:vietmap_map/data/models/vietmap_autocomplete_model.dart';
 
 import '../../../data/models/vietmap_reverse_model.dart';
+import '../components/select_map_tiles_modal.dart';
 
 class MapEvent {}
 
@@ -56,4 +57,10 @@ class MapEventUserClickOnMapPoint extends MapEvent {
       {required this.placeName,
       required this.placeShortName,
       required this.coordinate});
+}
+
+class MapEventChangeMapTiles extends MapEvent {
+  final MapTiles mapType;
+
+  MapEventChangeMapTiles(this.mapType);
 }

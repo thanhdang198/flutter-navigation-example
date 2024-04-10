@@ -1,7 +1,15 @@
 import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 import 'package:vietmap_flutter_navigation/embedded/controller.dart';
 
-enum VehicleType { car, bike, foot, motorcycle }
+enum VehicleType {
+  car('driving-traffic'),
+  bike('bike'),
+  foot('walking'),
+  motorcycle('motorcycle');
+
+  const VehicleType(this.name);
+  final String name;
+}
 
 class VietMapRoutingParams {
   String apiKey;

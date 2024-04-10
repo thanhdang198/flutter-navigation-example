@@ -1,10 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:talker/talker.dart';
-import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
-import 'package:vietmap_flutter_navigation/models/way_point.dart';
+import 'package:vietmap_gl_platform_interface/vietmap_gl_platform_interface.dart';
 import 'package:vietmap_map/extension/driving_profile_extension.dart';
 import 'package:vietmap_map/extension/latlng_extension.dart';
 import 'package:vietmap_map/features/routing_screen/bloc/routing_event.dart';
@@ -51,15 +49,10 @@ class RoutingBloc extends Bloc<RoutingEvent, RoutingState> {
         // add(RoutingEventGetDirection(
         //     from: params.originPoint!, to: params.destinationPoint!));
         if (params.navigationController != null) {
-          params.navigationController!.buildRoute(wayPoints: [
-            WayPoint(
-                name: '',
-                latitude: params.originPoint!.latitude,
-                longitude: params.originPoint!.longitude),
-            WayPoint(
-                name: '',
-                latitude: params.destinationPoint!.latitude,
-                longitude: params.destinationPoint!.longitude)
+          params.navigationController!.buildRoute(waypoints: [
+            LatLng(params.originPoint!.latitude, params.originPoint!.longitude),
+            LatLng(params.destinationPoint!.latitude,
+                params.destinationPoint!.longitude)
           ], profile: params.vehicle.convertToDrivingProfile());
         }
       }
@@ -107,15 +100,15 @@ class RoutingBloc extends Bloc<RoutingEvent, RoutingState> {
           from: params.originPoint!, to: params.destinationPoint!));
       if (params.navigationController != null) {
         EasyLoading.show();
-        params.navigationController!.buildRoute(wayPoints: [
-          WayPoint(
-              name: '',
-              latitude: params.originPoint!.latitude,
-              longitude: params.originPoint!.longitude),
-          WayPoint(
-              name: '',
-              latitude: params.destinationPoint!.latitude,
-              longitude: params.destinationPoint!.longitude)
+        Talker().debug(params.vehicle.convertToDrivingProfile());
+        Talker().debug(
+            ('${params.originPoint!.latitude}--o--${params.originPoint!.longitude}'));
+        Talker().debug(
+            ('${params.destinationPoint!.latitude}--d--${params.destinationPoint!.longitude}'));
+        params.navigationController!.buildRoute(waypoints: [
+          LatLng(params.originPoint!.latitude, params.originPoint!.longitude),
+          LatLng(params.destinationPoint!.latitude,
+              params.destinationPoint!.longitude)
         ], profile: params.vehicle.convertToDrivingProfile());
       }
     }
@@ -143,8 +136,8 @@ class RoutingBloc extends Bloc<RoutingEvent, RoutingState> {
       if (r.paths?.isNotEmpty != true) {
         emit(RoutingStateGetDirectionError(message: 'Error', state: state));
       } else {
-        var locs =
-            PolylinePoints().decodePolyline(r.paths!.first.points!).map((e) {
+        var locs = VietmapPolylineDecoder.decodePolyline(r.paths!.first.points!)
+            .map((e) {
           return LatLng(e.latitude, e.longitude);
         }).toList();
         emit(RoutingStateGetDirectionSuccess(state,

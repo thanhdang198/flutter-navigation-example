@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geolocator/geolocator.dart';
@@ -7,7 +9,6 @@ import 'package:vietmap_flutter_navigation/embedded/controller.dart';
 import 'package:vietmap_flutter_navigation/models/direction_route.dart';
 import 'package:vietmap_flutter_navigation/models/options.dart';
 import 'package:vietmap_flutter_navigation/models/route_progress_event.dart';
-import 'package:vietmap_flutter_navigation/models/way_point.dart';
 import 'package:vietmap_flutter_navigation/navigation_plugin.dart';
 import 'package:vietmap_flutter_navigation/views/navigation_view.dart';
 import 'package:vietmap_map/constants/colors.dart';
@@ -39,9 +40,9 @@ class _RoutingScreenState extends State<RoutingScreen> {
   late MapOptions _navigationOption;
   final _vietmapPlugin = VietMapNavigationPlugin();
 
-  List<WayPoint> wayPoints = [
-    WayPoint(name: "You are here", latitude: 10.759091, longitude: 106.675817),
-    WayPoint(name: "You are here", latitude: 10.762528, longitude: 106.653099)
+  List<LatLng> wayPoints = const [
+    LatLng(10.759091, 106.675817),
+    LatLng(10.762528, 106.653099)
   ];
   String guideDirection = "";
   Widget recenterButton = const SizedBox.shrink();
@@ -172,21 +173,17 @@ class _RoutingScreenState extends State<RoutingScreen> {
                             null) {
                           var args = ModalRoute.of(context)!.settings.arguments
                               as RoutingParamsModel;
-                          var listWaypoint = <WayPoint>[];
+                          var listWaypoint = <LatLng>[];
                           var res = await Geolocator.getCurrentPosition();
-                          listWaypoint.add(WayPoint(
-                              name: '',
-                              latitude: res.toLatLng().latitude,
-                              longitude: res.toLatLng().longitude));
+                          listWaypoint.add(LatLng(res.toLatLng().latitude,
+                              res.toLatLng().longitude));
 
-                          listWaypoint.add(WayPoint(
-                              name: '',
-                              latitude: args.lat,
-                              longitude: args.lng));
+                          listWaypoint
+                              .add(LatLng(args.lat ?? 0, args.lng ?? 0));
                           if (args.isStartNavigation) {
                             _navigationController
                                 ?.buildAndStartNavigation(
-                                    wayPoints: listWaypoint,
+                                    waypoints: listWaypoint,
                                     profile: DrivingProfile.drivingTraffic)
                                 .then((value) {
                               setState(() {
@@ -196,7 +193,7 @@ class _RoutingScreenState extends State<RoutingScreen> {
                             });
                           } else {
                             _navigationController?.buildRoute(
-                                wayPoints: listWaypoint,
+                                waypoints: listWaypoint,
                                 profile: DrivingProfile.drivingTraffic);
                           }
                         }
@@ -228,7 +225,11 @@ class _RoutingScreenState extends State<RoutingScreen> {
                             context: context,
                             builder: (_) => AlertDialog(
                                   title: const Text('Thông báo'),
-                                  content: const Text('Bạn đã đến nơi'),
+                                  content: const Text(
+                                    'Bạn đã đến nơi',
+                                    style: TextStyle(),
+                                    textAlign: TextAlign.center,
+                                  ),
                                   actions: [
                                     TextButton(
                                         onPressed: () {

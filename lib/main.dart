@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vietmap_map/constants/colors.dart';
@@ -14,6 +15,12 @@ import 'features/routing_screen/bloc/bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    
+  }
+
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider(create: (context) => MapBloc()),

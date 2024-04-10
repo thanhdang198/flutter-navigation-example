@@ -9,7 +9,7 @@ class CategoryMarker extends StatelessWidget {
   final Color? color;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return GestureDetector(  
       onTap: () {
         context.read<MapBloc>().add(MapEventShowPlaceDetail(model));
       },
@@ -47,8 +47,6 @@ class CategoryMarker extends StatelessWidget {
                         fontSize: 12),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-
-                    
                   ),
                 ],
               ),
