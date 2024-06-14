@@ -316,6 +316,13 @@ class _MapScreenState extends State<MapScreen> {
                     children: [
                       FloatingActionButton(
                         backgroundColor: Colors.white,
+                        onPressed: () {},
+                        child:
+                            Icon(Icons.zoom_out_sharp, color: Colors.grey[800]),
+                      ),
+                      const SizedBox(height: 10),
+                      FloatingActionButton(
+                        backgroundColor: Colors.white,
                         onPressed: () {
                           if (myLocationTrackingMode !=
                               MyLocationTrackingMode.TrackingCompass) {
