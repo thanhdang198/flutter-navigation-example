@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 import 'package:talker/talker.dart';
 import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 import 'package:vietmap_map/extension/tilemap_extension.dart';
@@ -303,11 +303,11 @@ class _MapScreenState extends State<MapScreen> {
                         panelPosition = position;
                       });
                     },
-                    panel: BottomSheetInfo(
-                      onClose: () {
-                        _panelController.hide();
-                      },
-                    )),
+                    panelBuilder: () => BottomSheetInfo(
+                          onClose: () {
+                            _panelController.hide();
+                          },
+                        )),
               ],
             ),
             floatingActionButton: panelPosition == 0.0
