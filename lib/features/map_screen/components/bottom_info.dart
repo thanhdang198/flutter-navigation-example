@@ -51,23 +51,17 @@ class BottomSheetInfo extends StatelessWidget {
                 const SizedBox(height: 10),
                 SizedBox(
                   width: double.infinity,
-                  child: Hero(
-                    tag: state.response.name ?? 'addressName',
-                    child: Text(
-                      state.response.name ?? '',
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  child: Text(
+                    state.response.name ?? '',
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const SizedBox(height: 10),
-                Hero(
-                  tag: state.response.getAddress(),
-                  child: Text(state.response.getAddress(),
-                      style: const TextStyle(fontSize: 16)),
-                ),
+                Text(state.response.getAddress(),
+                    style: const TextStyle(fontSize: 16)),
                 const Spacer(),
                 Row(
                   children: [
@@ -138,23 +132,17 @@ class BottomSheetInfo extends StatelessWidget {
                 const SizedBox(height: 10),
                 SizedBox(
                   width: double.infinity,
-                  child: Hero(
-                    tag: state.response.name ?? 'addressName',
-                    child: Text(
-                      state.response.name ?? '',
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  child: Text(
+                    state.response.name ?? '',
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const SizedBox(height: 10),
-                Hero(
-                  tag: state.response.address ?? 'address',
-                  child: Text(state.response.address ?? '',
-                      style: const TextStyle(fontSize: 16)),
-                ),
+                Text(state.response.address ?? '',
+                    style: const TextStyle(fontSize: 16)),
                 const Spacer(),
                 Row(
                   children: [

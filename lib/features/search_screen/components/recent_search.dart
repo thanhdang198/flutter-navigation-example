@@ -37,18 +37,11 @@ class RecentSearchWidget extends StatelessWidget {
                         Expanded(
                           child: ListTile(
                             contentPadding: EdgeInsets.zero,
-                            title: Hero(
-                                tag:
-                                    state.response[index].name ?? 'addressName',
-                                child: Text(state.response[index].name ?? '')),
+                            title: Text(state.response[index].name ?? ''),
                             subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Hero(
-                                  tag: state.response[index].address ?? '',
-                                  child:
-                                      Text(state.response[index].address ?? ''),
-                                ),
+                                Text(state.response[index].address ?? ''),
                                 const Divider()
                               ],
                             ),

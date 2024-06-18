@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 import 'package:vietmap_flutter_navigation/embedded/controller.dart';
 import 'package:vietmap_flutter_navigation/models/direction_route.dart';
@@ -96,7 +96,7 @@ class _RoutingScreenState extends State<RoutingScreen> {
           _panelController.show();
         }
       },
-      child: BlocListener<MapBloc, MapState>(
+      child: BlocListener<MapBloc, MapState>(  
         listener: (context, state) {
           if (state is MapStateGetPlaceDetailSuccess) {
             if (isFromOrigin) {
@@ -274,23 +274,25 @@ class _RoutingScreenState extends State<RoutingScreen> {
                                 panelPosition = position;
                               });
                             },
-                            panel: RoutingBottomPanel(
-                              onViewListStep: () {
-                                if (_panelController.panelPosition == 0.0) {
-                                  _panelController.animatePanelToPosition(1.0);
-                                } else {
-                                  _panelController.animatePanelToPosition(0.0);
-                                }
-                              },
-                              panelPosition: panelPosition,
-                              onStartNavigation: () {
-                                _navigationController?.startNavigation();
-                                setState(() {
-                                  _isRunning = true;
-                                });
-                              },
-                              routingBloc: routingBloc,
-                            ))
+                            panelBuilder: () => RoutingBottomPanel(
+                                  onViewListStep: () {
+                                    if (_panelController.panelPosition == 0.0) {
+                                      _panelController
+                                          .animatePanelToPosition(1.0);
+                                    } else {
+                                      _panelController
+                                          .animatePanelToPosition(0.0);
+                                    }
+                                  },
+                                  panelPosition: panelPosition,
+                                  onStartNavigation: () {
+                                    _navigationController?.startNavigation();
+                                    setState(() {
+                                      _isRunning = true;
+                                    });
+                                  },
+                                  routingBloc: routingBloc,
+                                ))
                   ],
                 ),
               )
