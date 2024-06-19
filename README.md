@@ -2,17 +2,20 @@
 [<img src="https://bizweb.dktcdn.net/100/415/690/themes/804206/assets/logo.png?1689561872933" height="40"/> </p>](https://bit.ly/vietmap-api)
 
  
-Contact [vietmap.vn](https://bit.ly/vietmap-api) to register a valid key.
-## Checkout the [dev branch](https://github.com/vietmap-company/flutter-navigation-example/tree/dev) to clone and run the example app with your key
+Contact [vietmap.vn](https://bit.ly/vietmap-api) to register a valid key. 
  
 ## Getting started
-This project use [vietmap_flutter_navigation](https://pub.dev/packages/vietmap_flutter_navigation) and [vietmap_flutter_gl](https://pub.dev/packages/vietmap_flutter_gl) to show and navigate on map. Please read the document of these packages before using this package.
+This project use [vietmap_flutter_navigation](https://pub.dev/packages/vietmap_flutter_navigation) and [vietmap_flutter_gl](https://pub.dev/packages/vietmap_flutter_gl) to show and navigate on map. Please read the document of these packages before using this package. VietMap provide many features to help you build a map application easily, please follow our organization on [pub.dev](https://pub.dev/publishers/maps.vietmap.vn/packages).
 
 ## Environment configure
 - Create `.env` file, which contains all content as [example.env](/example.env) file we created.
 - Replace your api key to the `YOUR_API_KEY_HERE` tag in [Info.plist](/ios/Runner/Info.plist) file.
-## Replace all YOUR_API_KEY_HERE with your key and YOUR_MAP_STYLE_URL with your map style url in [app_context.dart](/lib/di/app_context.dart) and [Info.plist](/ios/Runner/Info.plist) (for iOS)  
+
+
 <br></br>
+
+[<img src="https://github.com/vietmap-company/vietmap-react-native-navigation/blob/HEAD/img/ios_nav.jpeg?raw=true" height="600"/> </p>](https://vietmap.vn/maps-api)
+
 <br></br>
 
 [<img src="https://bizweb.dktcdn.net/100/415/690/themes/804206/assets/logo.png?1689561872933" height="40"/> </p>](https://vietmap.vn/maps-api)
