@@ -72,7 +72,7 @@ class RoutingBottomPanel extends StatelessWidget {
                             TextButton(
                                 onPressed: onViewListStep,
                                 style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
+                                    shape: WidgetStateProperty.all<
                                             RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
                                             borderRadius:
@@ -106,7 +106,7 @@ class RoutingBottomPanel extends StatelessWidget {
                             ElevatedButton(
                                 onPressed: onStartNavigation,
                                 style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
+                                    shape: WidgetStateProperty.all<
                                             RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
                                             borderRadius:

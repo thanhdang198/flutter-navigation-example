@@ -35,7 +35,7 @@ class _MapScreenState extends State<MapScreen> {
   final PanelController _panelController = PanelController();
   MyLocationTrackingMode myLocationTrackingMode =
       MyLocationTrackingMode.Tracking;
-  MyLocationRenderMode myLocationRenderMode = MyLocationRenderMode.NORMAL;
+  MyLocationRenderMode myLocationRenderMode = MyLocationRenderMode.COMPASS;
   final talker = Talker();
   String tileMap = AppContext.getVietmapMapStyleUrl() ?? "";
   @override
@@ -172,7 +172,8 @@ class _MapScreenState extends State<MapScreen> {
               children: [
                 VietmapGL(
                   myLocationEnabled: true,
-                  myLocationTrackingMode: MyLocationTrackingMode.Tracking,
+                  myLocationTrackingMode:
+                      MyLocationTrackingMode.TrackingCompass,
                   myLocationRenderMode: myLocationRenderMode,
                   trackCameraPosition: true,
                   compassViewMargins:
@@ -232,6 +233,29 @@ class _MapScreenState extends State<MapScreen> {
                         .add(MapEventOnUserLongTapOnMap(coordinates));
                   },
                 ),
+                _controller == null
+                    ? const SizedBox.shrink()
+                    : UserLocationLayer(
+                        mapController: _controller!,
+                        locationIcon: const Icon(
+                          Icons.circle,
+                          color: Colors.blue,
+                          size: 50,
+                        ),
+                        bearingIcon: Container(
+                          width: 30,
+                          height: 30,
+                          alignment: Alignment.center,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white),
+                          child: const Icon(
+                            Icons.arrow_upward,
+                            color: Colors.red,
+                            size: 15,
+                          ),
+                        ),
+                        ignorePointer: true,
+                      ),
                 _controller == null
                     ? const SizedBox.shrink()
                     : MarkerLayer(

@@ -49,8 +49,8 @@ class VietmapBottomActionView extends StatelessWidget {
                   child: Row(children: [
                     TextButton(
                         style: ButtonStyle(overlayColor:
-                            MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
+                            WidgetStateProperty.resolveWith<Color>(
+                                (Set<WidgetState> states) {
                           return Colors.transparent;
                         })),
                         onPressed: () {
@@ -111,8 +111,8 @@ class VietmapBottomActionView extends StatelessWidget {
                     )),
                     TextButton(
                         style: ButtonStyle(overlayColor:
-                            MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
+                            WidgetStateProperty.resolveWith<Color>(
+                                (Set<WidgetState> states) {
                           return Colors.transparent;
                         })),
                         onPressed: () {

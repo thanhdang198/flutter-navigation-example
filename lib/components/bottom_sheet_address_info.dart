@@ -33,7 +33,7 @@ class AddressInfo extends StatelessWidget {
             children: [
               ElevatedButton(
                   style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
                               side: const BorderSide(color: vietmapColor)))),
@@ -49,8 +49,8 @@ class AddressInfo extends StatelessWidget {
               TextButton(
                   style: ButtonStyle(
                       foregroundColor:
-                          MaterialStateProperty.all<Color>(vietmapColor),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          WidgetStateProperty.all<Color>(vietmapColor),
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
                               side: const BorderSide(color: vietmapColor)))),
